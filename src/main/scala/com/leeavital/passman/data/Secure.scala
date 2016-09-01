@@ -1,7 +1,7 @@
 package com.leeavital.passman.data
 
 /**
-  * Created by lee on 8/28/16.
+  * Secure is a monad for values that have been derived from a vault file.
   */
 sealed trait Secure[T] {
   def map[R](fn: T => R): Secure[R]
