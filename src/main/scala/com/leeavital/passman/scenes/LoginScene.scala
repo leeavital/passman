@@ -13,10 +13,12 @@ class LoginScene(tryUnlock: Function[String, Unit]) {
 
   lazy private val sceneTitle = text("Hello world") withFontSize (20)
 
-  lazy private val userLabel: Label = label("password?")
+  lazy private val userLabel: Label = label("enter your password")
 
   lazy private val passwordField = passwordInput
   userLabel.setLabelFor(userLabel)
+
+  lazy private val failureMessage = label("")
 
   passwordField onSubmit (() => {
     tryUnlock.apply(passwordField.getText)
@@ -27,13 +29,11 @@ class LoginScene(tryUnlock: Function[String, Unit]) {
   })))
 
   lazy private val gridPane: GridPane = layoutRows(
-    Seq(sceneTitle),
+    Seq(text("Welcome to Passmann") withFontSize(20)),
     Seq(userLabel, passwordField),
     Seq(signInButton),
     Seq(failureMessage)
   )
-
-  lazy private val failureMessage = label("")
 
   lazy val stackPane = new StackPane(gridPane)
 
