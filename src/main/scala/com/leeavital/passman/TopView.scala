@@ -47,7 +47,6 @@ class TopView extends Application with MainView {
     mainScene.setAvailableLogins(availableLogins)
 
     stage.setScene(mainScene.scene)
-    this.stage.setAlwaysOnTop(true)
   }
 
   override def onUnlockSucceeded: Unit = {
