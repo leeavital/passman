@@ -35,6 +35,7 @@ class NewPasswordForm(addLogin: AddLoginMessage => Unit) {
             status.setText("passwords do not match")
           } else {
             addLogin(AddLoginMessage(nameInput.getText, passField.getText))
+            clear
           }
         }))
       ),
@@ -45,4 +46,10 @@ class NewPasswordForm(addLogin: AddLoginMessage => Unit) {
     )
 
   def form = grid
+
+  private def clear: Unit = {
+    nameInput.clear()
+    passField.clear()
+    passField2.clear()
+  }
 }
