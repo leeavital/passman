@@ -91,7 +91,7 @@ class VaultStorage(vaultFile: String) {
     } catch {
       case (e: Exception) => {
         println(e)
-        BadPassword[Array[Byte]]
+        BadPassword
       }
     }
   }

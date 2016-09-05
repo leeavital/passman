@@ -30,7 +30,7 @@ class Controller(view: MainView) {
 
         view.showUnlockedZeroState(availableLogins)
 
-      case BadPassword() =>
+      case BadPassword =>
         view.onUnlockFailed
 
       case e@CorruptedFile(msg) =>

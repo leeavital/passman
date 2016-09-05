@@ -3,7 +3,7 @@ package com.leeavital.passman.data
 /**
   * Secure is a monad for values that have been derived from a vault file.
   */
-sealed trait Secure[T] {
+sealed trait Secure[+T] {
   def map[R](fn: T => R): Secure[R]
 
   def flatMap[R](fn: T => Secure[R]): Secure[R]
@@ -31,12 +31,12 @@ case class Ok[T](value: T) extends Secure[T] {
   }
 }
 
-case class BadPassword[T] extends Secure[T] {
-  override def map[R](fn: (T) => R): Secure[R] = {
-    BadPassword[R]
+case object BadPassword extends Secure[Nothing] {
+  override def map[R](fn: (Nothing) => R): Secure[R] = {
+    BadPassword
   }
 
-  override def flatMap[R](fn: (T) => Secure[R]): Secure[R] = {
-    BadPassword[R]
+  override def flatMap[R](fn: (Nothing) => Secure[R]): Secure[R] = {
+    BadPassword
   }
 }
